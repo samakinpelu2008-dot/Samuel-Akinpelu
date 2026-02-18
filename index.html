@@ -7,78 +7,70 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; scroll-behavior: smooth; }
-  body { font-family:'Roboto', sans-serif; background:#0d0d0d; color:#fff; }
-
-  a { color: inherit; text-decoration:none; }
-  button { cursor:pointer; }
-
+  *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+  body{font-family:'Roboto',sans-serif;background:#0d0d0d;color:#fff;}
+  a{text-decoration:none;color:inherit;}
+  button{cursor:pointer;}
   /* Hero Section */
-  header { min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; background:#000; position:relative; overflow:hidden; }
-  header::after { content:""; position:absolute; width:200%; height:200%; background:radial-gradient(circle,#001f3f 10%,transparent 70%); animation:rotate 20s linear infinite; top:-50%; left:-50%; z-index:0; }
-  header h1 { font-size:3rem; color:#00bfff; animation:fadeInDown 1s ease forwards; opacity:0; position:relative; z-index:1; }
-  header p { font-size:1.2rem; color:#ccc; margin-top:10px; animation:fadeInUp 1s ease forwards; opacity:0; animation-delay:0.5s; position:relative; z-index:1; }
-  .profile-pic { width:120px; height:120px; border-radius:50%; border:4px solid #00bfff; margin-top:20px; object-fit:cover; animation:fadeIn 1s forwards; opacity:0; animation-delay:0.8s; position:relative; z-index:1; }
-  header .buttons { margin-top:20px; animation:fadeIn 1s forwards; animation-delay:1s; opacity:0; position:relative; z-index:1; }
-  header .buttons button { background:#00bfff; border:none; padding:12px 25px; margin:0 10px; border-radius:5px; color:#000; font-weight:bold; transition:0.3s; }
-  header .buttons button:hover { background:#0090cc; color:#fff; }
-
-  @keyframes rotate { 0% { transform:rotate(0deg);} 100% { transform:rotate(360deg);} }
-  @keyframes fadeInDown { from {opacity:0; transform:translateY(-50px);} to {opacity:1; transform:translateY(0);} }
-  @keyframes fadeInUp { from {opacity:0; transform:translateY(50px);} to {opacity:1; transform:translateY(0);} }
-  @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
-
-  section { padding:80px 20px; max-width:1000px; margin:0 auto; opacity:0; transform:translateY(50px); transition:all 1s ease; }
-  section.visible { opacity:1; transform:translateY(0); }
-  h2 { font-size:2rem; color:#00bfff; margin-bottom:20px; text-align:center; }
-
+  header{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;background:#000;}
+  #particles{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;}
+  header h1{font-size:3rem;color:#00bfff;animation:fadeInDown 1s ease forwards;opacity:0;position:relative;z-index:1;}
+  header p{font-size:1.2rem;color:#ccc;margin-top:10px;animation:fadeInUp 1s ease forwards;opacity:0;animation-delay:0.5s;position:relative;z-index:1;}
+  .profile-pic{width:120px;height:120px;border-radius:50%;border:4px solid #00bfff;margin-top:20px;object-fit:cover;animation:fadeIn 1s forwards;opacity:0;animation-delay:0.8s;position:relative;z-index:1;}
+  .buttons{margin-top:20px;animation:fadeIn 1s forwards;animation-delay:1s;opacity:0;position:relative;z-index:1;}
+  .buttons button{background:#00bfff;border:none;padding:12px 25px;margin:0 10px;border-radius:5px;color:#000;font-weight:bold;transition:0.3s;}
+  .buttons button:hover{background:#0090cc;color:#fff;transform:scale(1.05);}
+  @keyframes fadeInDown{from{opacity:0;transform:translateY(-50px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes fadeInUp{from{opacity:0;transform:translateY(50px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+  /* Sections */
+  section{padding:80px 20px;max-width:1000px;margin:0 auto;opacity:0;transform:translateY(50px);transition:all 1s ease;}
+  section.visible{opacity:1;transform:translateY(0);}
+  h2{font-size:2rem;color:#00bfff;margin-bottom:20px;text-align:center;position:relative;}
   /* About */
-  #about p { line-height:1.8; color:#ccc; text-align:center; }
-
+  #about p{line-height:1.8;color:#ccc;text-align:center;}
   /* Skills */
-  .skills { display:flex; flex-direction:column; gap:20px; max-width:600px; margin:0 auto; }
-  .skill { background:#111; padding:15px 20px; border-radius:8px; }
-  .skill p { margin-bottom:5px; color:#00bfff; font-weight:bold; }
-  .skill-bar { background:#222; height:12px; border-radius:6px; overflow:hidden; }
-  .skill-fill { height:100%; background:#00bfff; width:0%; transition:width 2s ease; }
-
+  .skills{display:flex;flex-direction:column;gap:20px;max-width:600px;margin:0 auto;}
+  .skill{background:#111;padding:15px 20px;border-radius:8px;transition:transform 0.3s;}
+  .skill:hover{transform:scale(1.03);}
+  .skill p{margin-bottom:5px;color:#00bfff;font-weight:bold;}
+  .skill-bar{background:#222;height:12px;border-radius:6px;overflow:hidden;}
+  .skill-fill{height:100%;background:#00bfff;width:0%;transition:width 2s ease;}
   /* Projects */
-  .projects { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:20px; }
-  .project { background:#111; border-radius:10px; padding:15px; text-align:center; transition:0.3s; }
-  .project:hover { transform:scale(1.05); }
-  .project img { width:100%; border-radius:10px; height:150px; object-fit:cover; }
-  .project button { margin-top:10px; padding:10px 20px; background:#00bfff; border:none; border-radius:5px; color:#000; font-weight:bold; transition:0.3s; }
-  .project button:hover { background:#0090cc; color:#fff; }
-
+  .projects{display:grid;grid-template-columns: repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+  .project{background:#111;border-radius:10px;padding:15px;text-align:center;transition:0.3s;cursor:pointer;}
+  .project:hover{transform:scale(1.05);}
+  .project img{width:100%;border-radius:10px;height:150px;object-fit:cover;}
+  .project button{margin-top:10px;padding:10px 20px;background:#00bfff;border:none;border-radius:5px;color:#000;font-weight:bold;transition:0.3s;}
+  .project button:hover{background:#0090cc;color:#fff;transform:scale(1.05);}
   /* Resume */
-  #resume { text-align:center; }
-  #resume button { background:#00bfff; border:none; padding:12px 25px; border-radius:5px; color:#000; font-weight:bold; transition:0.3s; }
-  #resume button:hover { background:#0090cc; color:#fff; }
-
+  #resume{text-align:center;}
+  #resume button{background:#00bfff;border:none;padding:12px 25px;border-radius:5px;color:#000;font-weight:bold;transition:0.3s;}
+  #resume button:hover{background:#0090cc;color:#fff;transform:scale(1.05);}
   /* Testimonials */
-  .testimonial { background:#111; padding:20px; border-radius:10px; margin:10px 0; }
-  .testimonial p { font-style:italic; color:#ccc; }
-  .testimonial h4 { margin-top:10px; color:#00bfff; }
-
+  .testimonial{background:#111;padding:20px;border-radius:10px;margin:10px 0;transition:transform 0.3s;cursor:pointer;}
+  .testimonial:hover{transform:scale(1.03);}
+  .testimonial p{font-style:italic;color:#ccc;}
+  .testimonial h4{margin-top:10px;color:#00bfff;}
   /* Contact */
-  #contact form { display:flex; flex-direction:column; max-width:400px; margin:0 auto; gap:15px; }
-  #contact input, #contact textarea { padding:10px; border-radius:5px; border:none; outline:none; }
-  #contact button { background:#00bfff; border:none; padding:12px; border-radius:5px; font-weight:bold; transition:0.3s; }
-  #contact button:hover { background:#0090cc; color:#fff; }
-
+  #contact form{display:flex;flex-direction:column;max-width:400px;margin:0 auto;gap:15px;}
+  #contact input,#contact textarea{padding:10px;border-radius:5px;border:none;outline:none;}
+  #contact button{background:#00bfff;border:none;padding:12px;border-radius:5px;font-weight:bold;transition:0.3s;}
+  #contact button:hover{background:#0090cc;color:#fff;transform:scale(1.05);}
   /* Social Icons */
-  .social-icons { text-align:center; margin-top:20px; }
-  .social-icons a { color:#00bfff; font-size:1.5rem; margin:0 10px; transition:0.3s; }
-  .social-icons a:hover { color:#0090cc; transform:scale(1.2); }
-
+  .social-icons{text-align:center;margin-top:20px;}
+  .social-icons a{color:#00bfff;font-size:1.5rem;margin:0 10px;transition:0.3s;}
+  .social-icons a:hover{color:#0090cc;transform:scale(1.2);}
   /* Footer */
-  footer { text-align:center; padding:20px; background:#000; color:#555; }
+  footer{text-align:center;padding:20px;background:#000;color:#555;}
+  @media(max-width:600px){header h1{font-size:2rem;} header p{font-size:1rem;}}
 </style>
 </head>
 <body>
 
-<!-- Header / Hero -->
+<!-- Hero Section -->
 <header>
+  <canvas id="particles"></canvas>
   <img src="https://via.placeholder.com/120.png?text=Photo" alt="Profile" class="profile-pic">
   <h1>Akinpelu Samuel Oluwapelumi</h1>
   <p>Aspiring Tech Innovator & Developer</p>
@@ -98,26 +90,11 @@
 <section id="skills">
   <h2>My Skills</h2>
   <div class="skills">
-    <div class="skill">
-      <p>HTML</p>
-      <div class="skill-bar"><div class="skill-fill" data-fill="90%"></div></div>
-    </div>
-    <div class="skill">
-      <p>CSS</p>
-      <div class="skill-bar"><div class="skill-fill" data-fill="85%"></div></div>
-    </div>
-    <div class="skill">
-      <p>JavaScript</p>
-      <div class="skill-bar"><div class="skill-fill" data-fill="75%"></div></div>
-    </div>
-    <div class="skill">
-      <p>Python</p>
-      <div class="skill-bar"><div class="skill-fill" data-fill="70%"></div></div>
-    </div>
-    <div class="skill">
-      <p>Unity</p>
-      <div class="skill-bar"><div class="skill-fill" data-fill="50%"></div></div>
-    </div>
+    <div class="skill"><p>HTML</p><div class="skill-bar"><div class="skill-fill" data-fill="90%"></div></div></div>
+    <div class="skill"><p>CSS</p><div class="skill-bar"><div class="skill-fill" data-fill="85%"></div></div></div>
+    <div class="skill"><p>JavaScript</p><div class="skill-bar"><div class="skill-fill" data-fill="75%"></div></div></div>
+    <div class="skill"><p>Python</p><div class="skill-bar"><div class="skill-fill" data-fill="70%"></div></div></div>
+    <div class="skill"><p>Unity</p><div class="skill-bar"><div class="skill-fill" data-fill="50%"></div></div></div>
   </div>
 </section>
 
@@ -125,36 +102,11 @@
 <section id="projects">
   <h2>Projects</h2>
   <div class="projects">
-    <div class="project">
-      <img src="https://via.placeholder.com/300x150.png?text=Project+1" alt="Project 1">
-      <h3>Project 1</h3>
-      <p>Short description about Project 1.</p>
-      <button>View Project</button>
-    </div>
-    <div class="project">
-      <img src="https://via.placeholder.com/300x150.png?text=Project+2" alt="Project 2">
-      <h3>Project 2</h3>
-      <p>Short description about Project 2.</p>
-      <button>View Project</button>
-    </div>
-    <div class="project">
-      <img src="https://via.placeholder.com/300x150.png?text=Project+3" alt="Project 3">
-      <h3>Project 3</h3>
-      <p>Short description about Project 3.</p>
-      <button>View Project</button>
-    </div>
-    <div class="project">
-      <img src="https://via.placeholder.com/300x150.png?text=Project+4" alt="Project 4">
-      <h3>Project 4</h3>
-      <p>Short description about Project 4.</p>
-      <button>View Project</button>
-    </div>
-    <div class="project">
-      <img src="https://via.placeholder.com/300x150.png?text=Project+5" alt="Project 5">
-      <h3>Project 5</h3>
-      <p>Short description about Project 5.</p>
-      <button>View Project</button>
-    </div>
+    <div class="project"><img src="https://via.placeholder.com/300x150.png?text=Project+1" alt="Project 1"><h3>Project 1</h3><p>Short description about Project 1.</p><button>View Project</button></div>
+    <div class="project"><img src="https://via.placeholder.com/300x150.png?text=Project+2" alt="Project 2"><h3>Project 2</h3><p>Short description about Project 2.</p><button>View Project</button></div>
+    <div class="project"><img src="https://via.placeholder.com/300x150.png?text=Project+3" alt="Project 3"><h3>Project 3</h3><p>Short description about Project 3.</p><button>View Project</button></div>
+    <div class="project"><img src="https://via.placeholder.com/300x150.png?text=Project+4" alt="Project 4"><h3>Project 4</h3><p>Short description about Project 4.</p><button>View Project</button></div>
+    <div class="project"><img src="https://via.placeholder.com/300x150.png?text=Project+5" alt="Project 5"><h3>Project 5</h3><p>Short description about Project 5.</p><button>View Project</button></div>
   </div>
 </section>
 
@@ -167,14 +119,8 @@
 <!-- Testimonials -->
 <section id="testimonials">
   <h2>Testimonials</h2>
-  <div class="testimonial">
-    <p>"Samuel is a dedicated developer who delivers projects with excellence."</p>
-    <h4>- Colleague</h4>
-  </div>
-  <div class="testimonial">
-    <p>"Innovative and driven, he brings creative solutions to every challenge."</p>
-    <h4>- Mentor</h4>
-  </div>
+  <div class="testimonial"><p>"Samuel is a dedicated developer who delivers projects with excellence."</p><h4>- Colleague</h4></div>
+  <div class="testimonial"><p>"Innovative and driven, he brings creative solutions to every challenge."</p><h4>- Mentor</h4></div>
 </section>
 
 <!-- Contact -->
@@ -190,32 +136,56 @@
     <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
     <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
   </div>
-  <p style="text-align:center; margin-top:20px;">Email: <a href="mailto:stech3112025@gmail.com">stech3112025@gmail.com</a> | Phone: 09031163306</p>
+  <p style="text-align:center;margin-top:20px;">Email: <a href="mailto:stech3112025@gmail.com">stech3112025@gmail.com</a> | Phone: 09031163306</p>
 </section>
 
 <!-- Footer -->
-<footer>
-  &copy; 2026 Akinpelu Samuel Oluwapelumi. All rights reserved.
-</footer>
+<footer>&copy; 2026 Akinpelu Samuel Oluwapelumi. All rights reserved.</footer>
 
 <script>
-  // Animate sections on scroll
+  // Animate sections & skill bars on scroll
   const sections = document.querySelectorAll('section');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){ 
-        entry.target.classList.add('visible'); 
-        // Animate skill bars
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
         if(entry.target.id==='skills'){
-          document.querySelectorAll('.skill-fill').forEach(fill => {
-            fill.style.width = fill.getAttribute('data-fill');
+          document.querySelectorAll('.skill-fill').forEach(fill=>{
+            fill.style.width=fill.getAttribute('data-fill');
           });
         }
       }
     });
-  }, { threshold:0.2 });
-  sections.forEach(section => observer.observe(section));
+  },{threshold:0.2});
+  sections.forEach(section=>observer.observe(section));
+
+  // Particle background
+  const canvas=document.getElementById('particles');
+  const ctx=canvas.getContext('2d');
+  let w=canvas.width=window.innerWidth;
+  let h=canvas.height=window.innerHeight;
+  const particles=[];
+  const num=100;
+  for(let i=0;i<num;i++){
+    particles.push({x:Math.random()*w,y:Math.random()*h,radius:Math.random()*2+1,dx:(Math.random()-0.5)*0.5,dy:(Math.random()-0.5)*0.5});
+  }
+  function animate(){
+    ctx.clearRect(0,0,w,h);
+    particles.forEach(p=>{
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
+      ctx.fillStyle='#00bfff';
+      ctx.fill();
+      p.x+=p.dx;
+      p.y+=p.dy;
+      if(p.x<0||p.x>w)p.dx*=-1;
+      if(p.y<0||p.y>h)p.dy*=-1;
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+  window.addEventListener('resize',()=>{w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight;});
 </script>
 
 </body>
-  </html>
+ </html>
