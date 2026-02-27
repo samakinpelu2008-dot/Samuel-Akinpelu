@@ -3,314 +3,320 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Akinpelu Samuel | Portfolio</title>
+<title>Samuel Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  scroll-behavior:smooth;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
-  font-family:'Roboto',sans-serif;
-  background:#0a0a0a;
-  color:#fff;
+background:#0a0a0a;
+color:white;
+overflow-x:hidden;
 }
 
-/* Scroll progress bar */
-#progressBar{
-  position:fixed;
-  top:0;
-  left:0;
-  height:4px;
-  background:#00bfff;
-  width:0%;
-  z-index:9999;
-}
-
-/* Back to top */
-#backTop{
-  position:fixed;
-  bottom:30px;
-  right:30px;
-  background:#00bfff;
-  color:#000;
-  padding:12px;
-  border-radius:50%;
-  cursor:pointer;
-  display:none;
-  z-index:999;
-}
-
-/* Navigation */
+/* NAV */
 nav{
-  position:fixed;
-  top:15px;
-  left:50%;
-  transform:translateX(-50%);
-  z-index:1000;
+position:fixed;
+top:0;
+width:100%;
+background:#000;
+padding:15px 0;
+text-align:center;
+z-index:1000;
 }
 
 nav a{
-  margin:0 15px;
-  color:#00bfff;
-  font-weight:bold;
-  text-decoration:none;
+color:#00bfff;
+margin:0 15px;
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
 }
 
 nav a.active{
-  color:#fff;
+color:white;
 }
 
-/* Hero */
+/* HERO */
 header{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-}
-
-header h1{
-  font-size:3rem;
-  color:#00bfff;
-}
-
-header p{
-  margin-top:10px;
-  color:#ccc;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:#000;
 }
 
 .profile-pic{
-  width:140px;
-  height:140px;
-  border-radius:50%;
-  margin-top:20px;
-  border:4px solid #00bfff;
-  object-fit:cover;
-  animation:float 5s ease-in-out infinite;
-  box-shadow:0 0 20px #00bfff;
+width:160px;
+height:160px;
+border-radius:50%;
+object-fit:cover;
+border:4px solid #00bfff;
+box-shadow:0 0 25px #00bfff;
+margin-bottom:20px;
+animation:float 4s ease-in-out infinite;
 }
 
 @keyframes float{
-  0%{transform:translateY(0);}
-  50%{transform:translateY(-10px);}
-  100%{transform:translateY(0);}
+0%{transform:translateY(0px);}
+50%{transform:translateY(-12px);}
+100%{transform:translateY(0px);}
 }
 
-.buttons{
-  margin-top:20px;
+header h1{
+font-size:2.5rem;
+color:#00bfff;
 }
 
-.buttons button{
-  background:#00bfff;
-  border:none;
-  padding:10px 20px;
-  margin:0 10px;
-  font-weight:bold;
-  border-radius:5px;
-  cursor:pointer;
+header p{
+margin-top:10px;
+color:#ccc;
 }
 
-/* Sections */
+/* SECTIONS */
 section{
-  padding:80px 10%;
+padding:100px 20px;
+max-width:1000px;
+margin:auto;
 }
 
-section h2{
-  margin-bottom:30px;
-  color:#00bfff;
+h2{
+text-align:center;
+margin-bottom:40px;
+color:#00bfff;
 }
 
-/* Project cards */
-.project-card{
-  background:#111;
-  padding:20px;
-  margin-bottom:20px;
-  border-radius:8px;
-  transition:0.3s;
+/* PROJECTS */
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
 
-.project-card:hover{
-  transform:translateY(-5px);
+.project{
+background:#111;
+padding:20px;
+border-radius:10px;
+text-align:center;
+transition:0.3s;
 }
 
-.project-card button{
-  margin-top:10px;
-  padding:8px 15px;
-  background:#00bfff;
-  border:none;
-  font-weight:bold;
-  border-radius:5px;
+.project:hover{
+transform:scale(1.05);
 }
 
-/* Modal */
+.project button{
+margin-top:10px;
+padding:10px 20px;
+background:#00bfff;
+border:none;
+border-radius:6px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.project button:hover{
+background:#0090cc;
+color:white;
+}
+
+/* MODAL */
 .modal{
-  display:none;
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.8);
-  justify-content:center;
-  align-items:center;
+display:none;
+position:fixed;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+z-index:2000;
 }
 
 .modal-content{
-  background:#111;
-  padding:30px;
-  width:80%;
-  max-width:600px;
-  border-radius:10px;
-  position:relative;
+background:#111;
+margin:10% auto;
+padding:20px;
+width:80%;
+max-width:600px;
+border-radius:15px;
+position:relative;
 }
 
 .close{
-  position:absolute;
-  top:10px;
-  right:15px;
-  font-size:20px;
-  cursor:pointer;
+position:absolute;
+right:20px;
+top:10px;
+font-size:25px;
+cursor:pointer;
+color:#00bfff;
 }
 
-/* View In Card */
+/* VIEW IN CARD */
 .view-in-card{
-  width:50%;
-  float:right;
-  margin-top:20px;
+width:50%;
+float:right;
+margin-top:20px;
 }
 
 .view-in-card a{
-  display:block;
-  background:#00bfff;
-  color:#000;
-  padding:10px;
-  border-radius:8px;
-  font-weight:bold;
-  text-align:center;
-  text-decoration:none;
+display:block;
+padding:12px;
+background:#00bfff;
+color:black;
+text-align:center;
+border-radius:8px;
+font-weight:bold;
+text-decoration:none;
+transition:0.3s;
+}
+
+.view-in-card a:hover{
+background:#0090cc;
+color:white;
+transform:scale(1.05);
 }
 
 @media(max-width:600px){
-  .view-in-card{
-    width:100%;
-    float:none;
-  }
+.view-in-card{
+width:100%;
+float:none;
+}
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:20px;
+background:#000;
+color:#555;
 }
 </style>
 </head>
+
 <body>
 
-<div id="progressBar"></div>
-<div id="backTop"><i class="fas fa-arrow-up"></i></div>
-
 <nav>
-  <a href="#home" class="nav-link active">Home</a>
-  <a href="#projects" class="nav-link">Projects</a>
-  <a href="#contact" class="nav-link">Contact</a>
+<a href="#about" class="nav-link">About</a>
+<a href="#projects" class="nav-link">Projects</a>
+<a href="#contact" class="nav-link">Contact</a>
 </nav>
 
-<header id="home">
-  <h1>Akinpelu Samuel</h1>
-  <p>Software Builder | Tech Visionary</p>
-
-  <img src="https://i.ibb.co/BKL4k8Zm/1000223408.png" 
-       alt="Akinpelu Samuel" 
-       class="profile-pic">
-
-  <div class="buttons">
-    <button onclick="location.href='#projects'">View Projects</button>
-    <button onclick="location.href='#contact'">Contact</button>
-  </div>
+<header>
+<img src="profile.jpg" alt="Samuel" class="profile-pic">
+<h1>Akinpelu Samuel</h1>
+<p>Aspiring Tech Innovator & Developer</p>
 </header>
 
+<section id="about">
+<h2>About Me</h2>
+<p style="text-align:center;">
+I build real software projects including AlphaBank, Sammy Chat, CBT apps and more.
+Focused on becoming a global tech innovator.
+</p>
+</section>
+
 <section id="projects">
-  <h2>My Projects</h2>
+<h2>Projects</h2>
 
-  <div class="project-card">
-    <h3>Sammy Chat</h3>
-    <p>Modern chat application with phone authentication.</p>
-    <button onclick="openModal('modal1')">View Details</button>
-  </div>
-</section>
+<div class="projects">
 
-<section id="contact">
-  <h2>Contact Me</h2>
-  <p>Email: samuel@email.com</p>
-</section>
-
-<!-- Modal -->
-<div id="modal1" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('modal1')">&times;</span>
-    <h3>Sammy Chat</h3>
-    <p>Full real-time chat system with authentication and AI integration.</p>
-
-    <div class="view-in-card">
-      <a href="#" target="_blank">VIEW IN</a>
-    </div>
-  </div>
+<div class="project">
+<h3>AlphaBank</h3>
+<p>Online banking simulation system.</p>
+<button onclick="openModal('m1')">View Details</button>
 </div>
 
+<div class="project">
+<h3>Sammy Chat</h3>
+<p>Phone-number authentication chat app.</p>
+<button onclick="openModal('m2')">View Details</button>
+</div>
+
+</div>
+</section>
+
+<!-- MODALS -->
+
+<div id="m1" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('m1')">&times;</span>
+<h3>AlphaBank</h3>
+<p>Full banking dashboard simulation with transaction system and UI.</p>
+<div class="view-in-card">
+<a href="#">VIEW IN →</a>
+</div>
+</div>
+</div>
+
+<div id="m2" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('m2')">&times;</span>
+<h3>Sammy Chat</h3>
+<p>Real-time chat system using phone number login.</p>
+<div class="view-in-card">
+<a href="#">VIEW IN →</a>
+</div>
+</div>
+</div>
+
+<section id="contact">
+<h2>Contact</h2>
+<p style="text-align:center;">Email: stech3112025@gmail.com</p>
+</section>
+
+<footer>
+© 2026 Samuel Portfolio
+</footer>
+
 <script>
-// Nav highlight
-const sections = document.querySelectorAll("section, header");
-const navLinks = document.querySelectorAll(".nav-link");
 
-window.addEventListener("scroll", () => {
-  let current = "";
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 100;
-    if (pageYOffset >= sectionTop) {
-      current = section.getAttribute("id");
-    }
-  });
+/* NAV HIGHLIGHT */
+const sections=document.querySelectorAll("section");
+const navLinks=document.querySelectorAll(".nav-link");
 
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === "#" + current) {
-      link.classList.add("active");
-    }
-  });
-
-  // Progress bar
-  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  document.getElementById("progressBar").style.width = (winScroll / height) * 100 + "%";
-
-  // Back to top
-  if(winScroll > 300){
-    document.getElementById("backTop").style.display = "block";
-  } else {
-    document.getElementById("backTop").style.display = "none";
-  }
+window.addEventListener("scroll",()=>{
+let current="";
+sections.forEach(section=>{
+const sectionTop=section.offsetTop-80;
+if(pageYOffset>=sectionTop){
+current=section.getAttribute("id");
+}
+});
+navLinks.forEach(link=>{
+link.classList.remove("active");
+if(link.getAttribute("href")==="#"+current){
+link.classList.add("active");
+}
+});
 });
 
-document.getElementById("backTop").onclick = function(){
-  window.scrollTo({top:0, behavior:'smooth'});
-};
-
+/* MODAL */
 function openModal(id){
-  document.getElementById(id).style.display="flex";
+document.getElementById(id).style.display="block";
 }
 
 function closeModal(id){
-  document.getElementById(id).style.display="none";
+document.getElementById(id).style.display="none";
 }
 
-window.onclick = function(event){
-  const modal = document.querySelector(".modal");
-  if(event.target == modal){
-    modal.style.display = "none";
-  }
+window.onclick=function(e){
+document.querySelectorAll(".modal").forEach(modal=>{
+if(e.target===modal){
+modal.style.display="none";
+}
+});
 };
+
 </script>
 
 </body>
